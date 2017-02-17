@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta name="content-type" content="text/html; charset=UTF-8">
+
+  </head>
+  
+  <body>
+  <div class="modal fade" id="receivalbelDetailModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">应收账款明细</h4>
+      </div>
+      <div class="modal-body">
+    <div id="receivableInfo" class="row">
+    <div class="col-md-4">
+    	应收账款编号<br/>
+    	<h2 id="receivableIDH2"></h2><br/>
+    	应收账款产生日期<br/>
+    	<h2 id="dateH2"></h2>
+    </div>
+    <div class="col-md-4">
+    	金额<br/>
+    	<h2 id="totalAmountH2"></h2><br/>
+    	状态<br/>
+    	<h2 id="stateH2"></h2>
+    </div><div class="col-md-4"></div>
+    </div>
+    </div>
+    <div class="modal-body" id="receivableDetailsInfo">
+    <table class="table table-striped">
+    	<thead>
+    		<tr>
+    			<th>明细编号</th><th>产品编号</th><th>产品名称</th><th>单价</th><th>数量</th><th>金额小计</th>
+    		</tr>
+    	</thead>
+    	<tbody id="receivableDetailTbody">
+    	
+    	</tbody>
+    </table>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+  </body>
+</html>

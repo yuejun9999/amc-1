@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+  <form-beans >
+    <form-bean name="loginForm" type="struts.form.LoginForm" />
+    <form-bean name="receivableDetailForm" type="struts.form.ReceivableDetailForm" />
+    <form-bean name="receivableReminderForm" type="struts.form.ReceivableReminderForm" />
+    <form-bean name="confirmReceiveForm" type="struts.form.ConfirmReceiveForm" />
+    <form-bean name="payableDetailForm" type="struts.form.PayableDetailForm" />
+    <form-bean name="confirmPayForm" type="struts.form.ConfirmPayForm" />
+    <form-bean name="storageForm" type="struts.form.StorageForm" />
+    <form-bean name="userListForm" type="struts.form.UserListForm" />
+    <form-bean name="userUpdateForm" type="struts.form.UserUpdateForm" />
+    <form-bean name="userAddForm" type="struts.form.UserAddForm" />
+    <form-bean name="orderAddForm" type="struts.form.OrderAddForm" />
+    <form-bean name="customerAddForm" type="struts.form.CustomerAddForm" />
+    <form-bean name="customerUpdateForm" type="struts.form.CustomerUpdateForm" />
+    <form-bean name="supplierListForm" type="struts.form.SupplierListForm" />
+    <form-bean name="againorderListForm" type="struts.form.AgainorderListForm" />
+    <form-bean name="outstockListForm" type="struts.form.OutstockListForm" />
+    <form-bean name="againorderDetailForm" type="struts.form.AgainorderDetailForm" />
+    <form-bean name="outstockDetailForm" type="struts.form.OutstockDetailForm" />
+    <form-bean name="supplierAddForm" type="struts.form.SupplierAddForm" />
+    <form-bean name="supplierUpdateForm" type="struts.form.SupplierUpdateForm" />
+    <form-bean name="productUpdateForm" type="struts.form.ProductUpdateForm" />
+    <form-bean name="againOrderAddForm" type="struts.form.AgainOrderAddForm" />
+    <form-bean name="changePasswordForm" type="struts.form.ChangePasswordForm" />
+
+  </form-beans>
+
+  <global-exceptions />
+  <global-forwards >
+    <forward name="main" path="/main.jsp" />
+    <forward name="receivableReminder" path="/financial/receivableReminder.jsp"></forward>
+    <forward name="saleAccount" path="/financial/saleAccount.jsp"/>
+    <forward name="payable" path="/financial/payable.jsp"></forward>
+    <forward name="payableDetail" path="/financial/payableDetail.jsp" />
+    <forward name="purchaseAccount" path="/financial/purchaseAccount.jsp"></forward>
+    <forward name="ulist" path="/userList.do"/>
+    <forward name="userlist" path="/human/UserList.jsp" />
+    <forward name="userupdate" path="/human/UserUpdate.jsp"/>
+    <forward name="orderadd" path="/sale/OrderAdd.jsp"/>
+    <forward name="orderlist" path="/sale/OrderList.jsp"/>
+    <forward name="orderview" path="/sale/OrderView.jsp"/>
+    <forward name="orderoperation" path="/sale/OrderOperation.jsp"/>
+    <forward name="customerlist" path="/sale/CustomerList.jsp"/>
+    <forward name="clist" path="/customerList.do"/>
+    <forward name="customerupdate" path="/sale/CustomerUpdate.jsp"/>
+    <forward name="pickinglist" path="/storage/PickingList.jsp"/>
+    <forward name="pickingview" path="/storage/Pickingview.jsp"/>
+    <forward name="pickingoperation" path="/storage/PickingOperation.jsp"/>
+    <forward name="importlist" path="/storage/ImportList.jsp"/>
+    <forward name="importview" path="/storage/ImportView.jsp"/>
+    <forward name="importoperation" path="/storage/ImportOperation.jsp"/>
+    <forward name="productlist" path="/storage/ProductList.jsp"/>
+    <forward name="plist" path="/productList.do"/>
+    <forward name="productupdate" path="/storage/ProductUpdate.jsp"/>
+    <forward name="productadd" path="/storage/ProductAdd.jsp"/>
+    <forward name="againorderadd" path="/storage/AgainorderAdd.jsp"/>
+    <forward name="supplierlist" path="/procurement/SupplierList.jsp" />
+    <forward name="slist" path="/supplierList.do"/>
+    <forward name="againorderlist" path="/procurement/AgainorderList.jsp"/>
+    <forward name="outstocklist" path="/procurement/OutstockList.jsp"/>
+    <forward name="againorderview" path="/procurement/AgainorderView.jsp"/>
+    <forward name="againorderdetail" path="/procurement/AgainorderDetail.jsp"/>
+    <forward name="outstockac" path="/orderOutStockView.do"/>
+    <forward name="orderoutstockview" path="/sale/OrderOutStockView.jsp"/>
+    <forward name="outstockview" path="/procurement/OutstockView.jsp"/>
+    <forward name="outstockdetail" path="/procurement/OutstockDetail.jsp"/>
+    <forward name="supplieradd" path="/procurement/SupplierAdd.jsp"/>
+     <forward name="supplierupdate" path="/procurement/SupplierUpdate.jsp"/>
+     <forward name="login" path="/index.jsp" />
+    
+  </global-forwards>
+
+  <action-mappings >
+    <action
+      attribute="loginForm"
+      input="/index.jsp"
+      name="loginForm"
+      path="/login"
+      scope="session"
+      type="struts.action.LoginAction"
+      cancellable="true" />
+    <action
+	  name="receivable"
+      path="/receivable"
+      scope="request"
+      cancellable="true" 
+      type="struts.action.financial.ReceivableAction"/>
+    <action
+      attribute="receivableDetailForm"
+      name="receivableDetailForm"
+      path="/receivableDetail"
+      scope="request"
+      type="struts.action.financial.ReceivableDetailAction"
+      cancellable="true" />
+    <action
+      attribute="receivableReminderForm"
+      name="receivableReminderForm"
+      path="/receivableReminder"
+      scope="request"
+      type="struts.action.financial.ReceivableReminderAction"
+      cancellable="true" />
+    <action
+      attribute="confirmReceiveForm"
+      name="confirmReceiveForm"
+      path="/confirmReceive"
+      scope="request"
+      type="struts.action.financial.ConfirmReceiveAction"
+      cancellable="true" />
+    <action
+      path="/saleAccount"
+      type="struts.action.financial.SaleAccountAction"
+      cancellable="true" />
+    <action
+      path="/payable"
+      type="struts.action.financial.PayableAction"
+      cancellable="true" />
+    <action
+      attribute="payableDetailForm"
+      name="payableDetailForm"
+      path="/payableDetail"
+      scope="request"
+      type="struts.action.financial.PayableDetailAction"
+      cancellable="true" />
+    <action
+      attribute="confirmPayForm"
+      name="confirmPayForm"
+      path="/confirmPay"
+      scope="request"
+      type="struts.action.financial.ConfirmPayAction"
+      cancellable="true" />
+    <action
+      path="/purchaseAccount"
+      type="struts.action.financial.PuchaseAccountAction"
+      cancellable="true" />
+    <action
+      path="/userList"
+      type="struts.action.human.UserListAction"
+      cancellable="true" />
+    <action
+      path="/userDel"
+      type="struts.action.human.UserDelAction"
+      cancellable="true" />
+    <action
+      path="/userUpdate1"
+      type="struts.action.human.UserUpdate1Action"
+      cancellable="true" />
+    <action
+      attribute="userUpdateForm"
+      input="/human/UserUpdate.jsp"
+      name="userUpdateForm"
+      path="/userUpdate2"
+      type="struts.action.human.UserUpdate2Action"
+      cancellable="true" />
+    <action
+      attribute="userAddForm"
+      input="/human/UserAdd.jsp"
+      name="userAddForm"
+      path="/userAdd"
+      type="struts.action.human.UserAddAction"
+      cancellable="true" />
+
+    <action
+      path="/orderAdd"
+      type="struts.action.sale.OrderAddAction"
+      cancellable="true" />
+    <action
+      attribute="orderAddForm"
+      input="/sale/OrderAdd.jsp"
+      name="orderAddForm"
+      path="/orderAdd1"
+      type="struts.action.sale.OrderAdd1Action"
+      cancellable="true" />
+    <action
+      path="/orderList"
+      type="struts.action.sale.OrderListAction"
+      cancellable="true" />
+    <action
+      path="/orderOperation"
+      type="struts.action.sale.OrderOperationAction"
+      cancellable="true" />
+    <action
+      path="/customerList"
+      type="struts.action.sale.CustomerListAction"
+      cancellable="true" />
+    <action
+      attribute="customerAddForm"
+      input="/sale/CustomerAdd.jsp"
+      name="customerAddForm"
+      path="/customerAdd"
+      type="struts.action.sale.CustomerAddAction"
+      cancellable="true" />
+    <action
+      path="/customerDel"
+      type="struts.action.sale.CustomerDelAction"
+      cancellable="true" />
+    <action
+      path="/customerUpdate1"
+      type="struts.action.sale.CustomerUpdate1Action"
+      cancellable="true" />
+    <action
+      attribute="customerUpdateForm"
+      input="/sale/CustomerUpdate.jsp"
+      name="customerUpdateForm"
+      path="/customerUpdate2"
+      type="struts.action.sale.CustomerUpdate2Action"
+      cancellable="true" />
+    <action
+      path="/pickingList"
+      type="struts.action.storage.PickingListAction"
+      cancellable="true" />
+    <action
+      path="/pickingOperation"
+      type="struts.action.storage.PickingOperationAction"
+      cancellable="true" />
+    <action
+      path="/shipmentConfirm"
+      type="struts.action.storage.ShipmentConfirmAction"
+      cancellable="true" />
+    <action
+      path="/importList"
+      type="struts.action.storage.ImportListAction"
+      cancellable="true" />
+    <action
+      path="/importOperation"
+      type="struts.action.storage.ImportOperationAction"
+      cancellable="true" />
+      <action
+      path="/supplierList"
+      type="struts.action.procurement.SupplierListAction"
+      cancellable="true" />
+       <action
+      path="/againorderList"
+      type="struts.action.procurement.AgainorderListAction"
+      cancellable="true" />
+    <action
+      path="/outstockList"
+      type="struts.action.procurement.OutstockListAction"
+      cancellable="true" />
+    <action
+      path="/againorderDetail"
+      type="struts.action.procurement.AgainorderDetailAction"
+      cancellable="true" />
+    <action
+      path="/outstockDetail"
+      type="struts.action.procurement.OutstockDetailAction"
+      cancellable="true" />
+    <action
+      attribute="supplierAddForm"
+      input="/procurement/SupplierAdd.jsp"
+      name="supplierAddForm"
+      path="/supplierAdd"
+      type="struts.action.procurement.SupplierAddAction"
+      cancellable="true" />
+    <action
+      path="/supplierUpdate1"
+      type="struts.action.procurement.SupplierUpdate1Action"
+      cancellable="true" />
+   <action
+      attribute="supplierUpdateForm"
+      input="/procurement/SupplierUpdate.jsp"
+      name="supplierUpdateForm"
+      path="/supplierUpdate2"
+      type="struts.action.procurement.SupplierUpdate2Action"
+      cancellable="true" />
+    <action
+      path="/supplierDelete"
+      type="struts.action.procurement.SupplierDeleteAction"
+      cancellable="true" />
+    <action
+      path="/purchasingConfirm"
+      type="struts.action.procurement.PurchasingConfirmAction"
+      cancellable="true" />
+    <action
+      path="/productList"
+      type="struts.action.storage.ProductListAction"
+      cancellable="true" />
+    <action
+      path="/productDel"
+      type="struts.action.storage.ProductDelAction"
+      cancellable="true" />
+    <action
+      path="/productUpdate1"
+      type="struts.action.storage.ProductUpdate1Action"
+      cancellable="true" />
+    <action
+      attribute="productUpdateForm"
+      input="/storage/ProductUpdate.jsp"
+      name="productUpdateForm"
+      path="/productUpdate2"
+      type="struts.action.storage.ProductUpdate2Action"
+      cancellable="true" />
+    <action
+      path="/productAdd1"
+      type="struts.action.storage.ProductAdd1Action"
+      cancellable="true" />
+    <action
+      attribute="productUpdateForm"
+      input="/storage/ProductAdd.jsp"
+      name="productUpdateForm"
+      path="/productAdd2"
+      type="struts.action.storage.ProductAdd2Action"
+      cancellable="true" />
+    <action
+      path="/againOrderAdd"
+      type="struts.action.storage.AgainOrderAddAction"
+      cancellable="true" />
+    <action
+      attribute="againOrderAddForm"
+      input="/storage/AgainorderAdd.jsp"
+      name="againOrderAddForm"
+      path="/againOrderAdd1"
+      type="struts.action.storage.AgainOrderAdd1Action"
+      cancellable="true" />
+    <action
+      path="/orderOutStockView"
+      type="struts.action.sale.OrderOutStockViewAction"
+      cancellable="true" />
+    <action
+      path="/pickingAdd2"
+      type="struts.action.sale.PickingAdd2Action"
+      cancellable="true" />
+      <action
+      path="/storageUpdate"
+      type="struts.action.storage.StorageUpdateAction"
+      cancellable="true" />
+    <action
+      path="/orderOperation2"
+      type="struts.action.sale.OrderOperation2Action"
+      cancellable="true" />
+    <action
+      path="/logout"
+      type="struts.action.LogoutAction"
+      cancellable="true" />
+    <action
+      attribute="changePasswordForm"
+      name="changePasswordForm"
+      path="/changePassword"
+      scope="request"
+      type="struts.action.ChangePasswordAction"
+      cancellable="true" />
+
+  </action-mappings>
+  <message-resources parameter="struts.ApplicationResources" />
+</struts-config>
+

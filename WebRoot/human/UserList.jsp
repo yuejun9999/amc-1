@@ -23,10 +23,15 @@ function update(id){
 }
 
 </SCRIPT>
+<style type="text/css">
+#addUser{
+	float: right;
+}
+</style>
   </head>
   
   <body >
-    
+		  <button id="addUser" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-plus"></span> 添加用户</button>
           <h1 class="sub-header">人事管理-用户列表</h1>
           <div class="table-responsive">
         
@@ -56,6 +61,10 @@ function update(id){
             </table>
            
           </div>
-       
+       <script type="text/javascript">
+       $("#addUser").click(function(e){
+           $("#modal-div").load("human/UserAdd.jsp");
+       });
+       </script>
   </body>
 </html>

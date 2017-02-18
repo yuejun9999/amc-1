@@ -55,7 +55,7 @@ public class UserAddAction extends ResultBasedAction {
 	@Override
 	public Result execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request) throws Exception {
-		String msg="操作失败";
+		String msg="操作失败：未知错误，请重试。";
 		UserAddForm useradd=(UserAddForm)form;
 		String username= useradd.getUsername();
 		String password=useradd.getPassword();
@@ -67,7 +67,7 @@ public class UserAddAction extends ResultBasedAction {
 		ResultSet rs=msq.query("select * from amc.user where userName='"+username+"'", conn);
 		//rs.beforeFirst();
 		if(rs!=null){
-			msg="已有记录，操作失败";
+			msg="操作失败：用户名重复，请更换其他用户名。";
 			StringResult string=new StringResult(msg);
 			conn.close();
 			return string;
@@ -81,7 +81,7 @@ public class UserAddAction extends ResultBasedAction {
 			System.out.println("update user set staffID="+id+" where userName='"+username+"'");
 			msq.update("update user set staffID="+id+" where userName='"+username+"'");
 			conn.close();
-			msg="操作成功！";
+			msg="SUCCESS";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

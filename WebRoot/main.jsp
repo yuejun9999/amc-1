@@ -239,12 +239,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <ul class="list-group">
                               <li class="list-group-item">
                                 <button id="user-list"class="menu-item-left">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>用户列表
-                                </button>
-                              </li>
-                              <li class="list-group-item">
-                                <button id="user-add" class="menu-item-left">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>添加用户
+                                    <span class="glyphicon glyphicon-triangle-right"></span>用户管理
                                 </button>
                               </li>
                               
@@ -390,9 +385,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
             if (this.id=="user-list"){
             	$("#workspace").load("userList.do");
-            }
-            if (this.id=="user-add"){
-            	$("#workspace").load("human/UserAdd.jsp");
             }
             
             if (this.id=="statistics"){

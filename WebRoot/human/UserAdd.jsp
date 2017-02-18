@@ -25,7 +25,10 @@ function youxiang(){
  if(re.test(a)){
  return true;}
  else{
- alert("不是有效用户名");}
+ $("#alert-div-add-user").removeClass();
+ $("#alert-div-add-user").text("操作失败：请输入合法的邮箱作为用户名。").fadeOut(5000);
+ $("#alert-div-add-user").addClass("alert alert-danger");
+}
 }
 function consist(){
   var a=document.getElementById("password").value;
@@ -34,7 +37,9 @@ function consist(){
   return true;
   }
   else{
-  alert("两次输入密码不一致");
+  $("#alert-div-add-user").removeClass();
+ $("#alert-div-add-user").text("操作失败：请确认两次输入的密码一致。").fadeOut(5000);
+ $("#alert-div-add-user").addClass("alert alert-danger");
   return false;
   }
 }
@@ -47,7 +52,20 @@ if(youxiang()&&consist()){
 		url: "userAdd.do",
 		type: "POST",
 		success: function(msg) {
-			alert(msg);
+		console.log(msg);
+		if (msg=="SUCCESS") {
+			$("#alert-div-add-user").removeClass();
+ 			$("#alert-div-add-user").text("操作成功，继续输入信息课继续添加。").fadeOut(5000);
+ 			$("#alert-div-add-user").addClass("alert alert-success");
+ 			$("input").val("");
+		}
+		
+		else{
+			$("#alert-div-add-user").removeClass();
+ 			$("#alert-div-add-user").text(msg).fadeOut(5000);
+ 			$("#alert-div-add-user").addClass("alert alert-danger");
+		}
+			
 			 
 			
 		}
@@ -60,12 +78,17 @@ if(youxiang()&&consist()){
   </head>
   
   <body >
-   
-
-          <h1 class="sub-header">人事管理-添加用户</h1>
-          <div class="table-responsive">
+   <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">添加用户</h4>
+      </div>
          
           <form id="useradd" target="empty" onsubmit="addmsg();">
+          <div class="modal-body" id="receivableDetailsInfo">
+          	<div id="alert-div-add-user"></div>
             <table class="table table-striped">  
       <tr>   
         <th colspan="2">新增用户信息</th>   
@@ -103,18 +126,25 @@ if(youxiang()&&consist()){
         <option value="普通员工">普通员工</option>
         </select></td>
       </tr>  
-      <tr>
-      <td>
-      </td>
-      <td>
-  <input class="btn btn-primary" type="submit"  value="提交"/>   <input class="btn btn-default" type="reset" value="重置"/>
-      </td>
-      </tr>
-    </table> 
-    <iframe name="empty" style="display:none"></iframe>
-    </form>
-           
-          </div>
       
+    </table> 
+    </div>
+    <div class="modal-footer">
+      	<button type="submit" class="btn btn-primary">确认添加</button>
+        <button id="close" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </form>
+      
+    </div>
+  </div>
+</div>
+<iframe name="empty" style="display:none"></iframe>
+          
+      <script type="text/javascript">
+      $("#addUserModal").modal("show");
+      $("#close").click(function(e){
+      	$("#workspace").load("userList.do");
+      });
+      </script>
   </body>
 </html>

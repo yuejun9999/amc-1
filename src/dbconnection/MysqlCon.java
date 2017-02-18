@@ -16,7 +16,7 @@ public class MysqlCon {
     // MySQL数据库的连接用户名  
     public static final String DBUSER = "root";  
     // MySQL数据库的连接密码  
-    public static final String DBPASS = "Liqi5474"; 
+    public static final String DBPASS = "Amc123456"; 
 	
 	public Connection connection() throws SQLException{
 		Connection conn = null; // 数据库连接  

@@ -26,6 +26,7 @@ function youxiang(){
  return true;}
  else{
  $("#alert-div-add-user").removeClass();
+ $("#alert-div-add-user").show();
  $("#alert-div-add-user").text("操作失败：请输入合法的邮箱作为用户名。").fadeOut(5000);
  $("#alert-div-add-user").addClass("alert alert-danger");
 }
@@ -38,12 +39,14 @@ function consist(){
   }
   else{
   $("#alert-div-add-user").removeClass();
+  $("#alert-div-add-user").show();
  $("#alert-div-add-user").text("操作失败：请确认两次输入的密码一致。").fadeOut(5000);
  $("#alert-div-add-user").addClass("alert alert-danger");
   return false;
   }
 }
 function addmsg(){
+console.log("Form is submitted!");
 if(youxiang()&&consist()){
   $.ajax({
         data:$('#useradd').serialize(),// 你的formid
@@ -55,13 +58,15 @@ if(youxiang()&&consist()){
 		console.log(msg);
 		if (msg=="SUCCESS") {
 			$("#alert-div-add-user").removeClass();
- 			$("#alert-div-add-user").text("操作成功，继续输入信息课继续添加。").fadeOut(5000);
+			$("#alert-div-add-user").show();
+ 			$("#alert-div-add-user").text("操作成功，继续输入信息可继续添加。").fadeOut(5000);
  			$("#alert-div-add-user").addClass("alert alert-success");
  			$("input").val("");
 		}
 		
 		else{
 			$("#alert-div-add-user").removeClass();
+			$("#alert-div-add-user").show();
  			$("#alert-div-add-user").text(msg).fadeOut(5000);
  			$("#alert-div-add-user").addClass("alert alert-danger");
 		}

@@ -53,7 +53,7 @@ public class UserUpdate2Action extends ResultBasedAction {
 	@Override
 	public Result execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request) throws Exception {
-		String msg="操作失败！";
+		String msg="操作失败，请重试。";
 		String userid=request.getParameter("id");
 		UserUpdateForm userupdtf=(UserUpdateForm)form;
 		String username=userupdtf.getUsername();
@@ -71,7 +71,7 @@ public class UserUpdate2Action extends ResultBasedAction {
 		try {
 			staffid=rs.getInt(1)+"";
 			conn.close();
-			msg="操作成功！";
+			msg="SUCCESS";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -38,7 +38,21 @@ function updatemsg(id){
 		url: "userUpdate2.do?id="+id,
 		type: "POST",
 		success: function(msg) {
-			alert(msg);
+			console.log(msg);
+			if(msg=="SUCCESS"){
+				$("#message-box").removeClass();
+				$("#message-box").show();
+				$("#message-box").text("操作成功！").fadeOut(5000);
+				$("#message-box").addClass("alert alert-success");
+			}
+			else{
+				$("#message-box").removeClass();
+				$("#message-box").show();
+				$("#message-box").text(msg).fadeOut(5000);
+				$("#message-box").addClass("alert alert-danger");
+			}
+			$("#workspace").load("userList.do");
+			$("#updateUserModal").modal("hide");
 			 
 			
 		}
@@ -49,11 +63,17 @@ function updatemsg(id){
   </head>
   
   <body >
-    
-          <h1 class="sub-header">用户列表-修改用户</h1>
-          <div class="table-responsive">
+   <div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">添加用户</h4>
+      </div>
          
-          <form  id="userupdate" target="empty" onsubmit="updatemsg(${userid})">
+          <form id="userupdate" target="empty" onsubmit="updatemsg(${userid})">
+          <div class="modal-body">
+          	<div id="alert-div-update-user"></div>
             <table class="table table-striped">  
       <tr>   
         <th colspan="2">编辑用户信息</th>   
@@ -85,18 +105,23 @@ function updatemsg(id){
         </select></td>
         <script language="javascript">select("select_title",'${stafftitle}');</script>
       </tr>  
-      <tr>
-      <td>
-      </td>
-      <td>
-      <input class="btn btn-primary" type="submit" value="提交"/><input class="btn btn-default" type="reset" value="重置"/>
-      </td>
-      </tr>
+      
     </table> 
-    <iframe name="empty" style="display:none"></iframe>
+    </div>
+    <div class="modal-footer">
+      	<button type="submit" class="btn btn-primary">确认修改</button>
+        <button id="close" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
     </form>
-           
-          </div>
+      
+    </div>
+  </div>
+</div>
+<iframe name="empty" style="display:none"></iframe>
+          
+      <script type="text/javascript">
+      $("#updateUserModal").modal("show");
+      </script> 
      
   </body>
 </html>

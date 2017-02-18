@@ -10,16 +10,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
  
     <SCRIPT type="text/JavaScript">
-function del(id){
-if(confirm("真的要删除该条记录吗?")){
-$("#workspace").load("userDel.do?id="+id);
-return true;
-}else{
-return false;
-}
+function del(id, name){
+$.ajax({
+	url:"human/ConfirmDeleteUser.html",
+	method: "GET",
+	success:function(msg){
+		$("#modal-div").html(msg);
+		$("#confirmDelUserModal").modal("show");
+		$("#staffnameSpan").text(name);
+		$("#confirmDelUserButton").click(function(e){
+			$.get({
+				url:"userDel.do?id="+id,
+				success: function(msg){
+					$("#workspace").load("userList.do");
+					if (msg=="SUCCESS"){
+					$("#message-box").removeClass();
+					$("#message-box").show();
+					$("#message-box").text("操作成功！").fadeOut(5000);
+					$("#message-box").addClass("alert alert-success");
+					}
+					else{
+					$("#message-box").removeClass();
+					$("#message-box").show();
+					$("#message-box").text(msg).fadeOut(5000);
+					$("#message-box").addClass("alert alert-danger");
+					}
+				}
+			});
+		});
+	}
+});
 }
 function update(id){
-    $("#workspace").load("userUpdate1.do?id="+id);
+    $("#modal-div").load("userUpdate1.do?id="+id);
 }
 
 </SCRIPT>
@@ -54,7 +77,8 @@ function update(id){
                 <td>${userlist.staffname}</td>
                 <td>${userlist.department}</td>
                 <td>${userlist.title}</td>
-                <td ><button class="btn btn-default btn-sm" onclick="del(${userlist.userid})" >删除</button><button class="btn btn-default btn-sm" onclick="update(${userlist.userid})">修改</button></td>
+                <td ><button class="btn btn-default btn-sm" onclick="del(${userlist.userid},'${userlist.staffname}')" >删除</button>
+                	<button class="btn btn-default btn-sm" onclick="update(${userlist.userid})">修改</button></td>
                 </tr>
                 </c:forEach>
               </tbody>

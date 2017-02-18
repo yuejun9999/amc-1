@@ -14,6 +14,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import struts.action.Result;
+import struts.action.ResultBasedAction;
+import struts.action.StringResult;
 import dbconnection.MysqlCon;
 
 /** 
@@ -23,7 +26,7 @@ import dbconnection.MysqlCon;
  * XDoclet definition:
  * @struts.action validate="true"
  */
-public class UserDelAction extends Action {
+public class UserDelAction extends ResultBasedAction {
 	/*
 	 * Generated Methods
 	 */
@@ -36,13 +39,23 @@ public class UserDelAction extends Action {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		String id=request.getParameter("id");
-		MysqlCon msq=new MysqlCon();
-		msq.delete("delete from user where userID="+id);
-		//msq.update("update user set password='123' where userID=1");
-		//msq.insert("insert into staff(staffName,gender,age) values('管理员',1,30)");
-		return mapping.findForward("ulist");
+
+
+	@Override
+	public Result execute(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request) throws Exception {
+		// TODO Auto-generated method stub
+		String msg = "";
+		try{
+			String id=request.getParameter("id");
+			MysqlCon msq=new MysqlCon();
+			msq.delete("delete from user where userID="+id);
+			msg="SUCCESS";
+		}catch(Exception e){
+			msg="操作失败，请重试。";
+		}
+		
+		StringResult sr = new StringResult(msg);
+		return sr;
 	}
 }

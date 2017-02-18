@@ -53,7 +53,7 @@ public class UserUpdate2Action extends ResultBasedAction {
 	@Override
 	public Result execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request) throws Exception {
-		String msg="²Ù×÷Ê§°Ü£¬ÇëÖØÊÔ¡£";
+		String msg="²Ù×÷Ê§°Ü£¬ÇëÖØÊÔ£¡";
 		String userid=request.getParameter("id");
 		UserUpdateForm userupdtf=(UserUpdateForm)form;
 		String username=userupdtf.getUsername();

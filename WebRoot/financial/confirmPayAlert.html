@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta name="content-type" content="text/html; charset=UTF-8">
+
+  </head>
+  
+  <body>
+  <div class="modal fade" id="confirmPayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+    	请检查实付金额与应付款项的金额一致再继续！本条记录的应收金额为<span id="totalAccountSpan"></span>
+      </div>
+      <div class="modal-footer">
+      	<button id="confirmMoneyPayed" type="button" class="btn btn-success" data-dismiss="modal">确认付款</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+  </body>
+</html>
